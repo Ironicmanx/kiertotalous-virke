@@ -11,6 +11,8 @@
 .buildlog/
 .history
 .svn/
+goals.text
+working.text
 
 # IntelliJ related
 *.iml

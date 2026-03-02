@@ -50,10 +50,7 @@ abstract class CrawlSpaceFoundation extends Foundation
 
   @override
   num? get concreteTons => Utils.sumOrNull([
-        material == FoundationMaterial.concreteCasting
-            ? _reinforcedConcreteSlabFalsePlinthGroundFloor.concreteTons
-            : null,
-        _reinforcedConcreteSlabFalsePlinthGroundFloor.tons,
+        _reinforcedConcreteSlabFalsePlinthGroundFloor.concreteTons,
         material == FoundationMaterial.concreteCasting
             ? _reinforcedConcreteCastFoundationCrawlSpace.tons
             : null,
@@ -96,12 +93,10 @@ abstract class CrawlSpaceFoundation extends Foundation
         _solidBoardingCrawlSpaceGroundFloor.volume,
       ]);
 
-  /// TODO: This calculation is most likely incorrect. The reference Excel had this
-  /// so we are keeping it as is for now.
   @override
   num? get solidBoardingAndWoodFrameTons => Utils.sumOrNull([
         _woodFrameCrawlSpaceGroundFloor.tons,
-        _woodFrameCrawlSpaceGroundFloor.tons,
+        _solidBoardingCrawlSpaceGroundFloor.tons,
       ]);
 
   @override

@@ -117,7 +117,7 @@ void main() {
       });
 
       test('concrete tons', () {
-        expect(crawlSpaceFoundation.concreteTons, equals(70));
+        expect(crawlSpaceFoundation.concreteTons, equals(45)); // 18 * 2.5 = 45.
       });
 
       test('rebar tons', () {
@@ -139,7 +139,7 @@ void main() {
 
       test('CrawlSpaceFoundation#solidBoardingAndWoodFrameTons', () {
         expect(
-            crawlSpaceFoundation.solidBoardingAndWoodFrameTons, equals(0.62));
+            crawlSpaceFoundation.solidBoardingAndWoodFrameTons, equals(2.31)); // 0.31 + 2 = 2.31.
       });
     });
 
@@ -201,7 +201,8 @@ void main() {
       });
 
       test('plastic waste tons', () {
-        expect(hollowCoreSlabFoundation.plasticWasteTons, equals(25.381));
+        expect(hollowCoreSlabFoundation.plasticWasteTons,
+            closeTo(0.701, 0.0001));
       });
     });
   });

@@ -176,14 +176,12 @@ class FinnFoamFalsePlinth extends DemolitionMaterials {
 
   FinnFoamFalsePlinth([this.foundation, this.sizing = 100]);
 
-  /// TODO: This is according to specs, but still seems a fishy to use frost proof
-  /// styrofoam measurements for finn foam false plinth?
   @override
   num get kgPerSquareMeter =>
-      FoundationWeights.frostProofStyrofoam100mmKgPerSqm;
+      FoundationWeights.finnFoam50mmKgPerSqm / 50 * sizing;
 
   @override
-  num get kgPerCubicMeter => FoundationWeights.frostProofStyrofoam100mmKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.finnFoam50mmKgPerCbm;
 
   @override
   num? get volume {
@@ -807,10 +805,11 @@ class FinnFoamShallowFoundation extends DemolitionMaterials {
   FinnFoamShallowFoundation([this.foundation, this.sizing = 100]);
 
   @override
-  num get kgPerSquareMeter => ExteriorWallWeights.woodFrame45x100mmKgPerSqm;
+  num get kgPerSquareMeter =>
+      FoundationWeights.finnFoam50mmKgPerSqm / 50 * sizing;
 
   @override
-  num get kgPerCubicMeter => ExteriorWallWeights.woodFrame45x100mmKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.finnFoam50mmKgPerCbm;
 
   @override
   num? get volume {
@@ -1197,11 +1196,10 @@ class FinnFoamColumnFoundation extends DemolitionMaterials {
 
   @override
   num get kgPerSquareMeter =>
-      UpperBaseStructureAndWaterRoofWeights.hardDiskKgPerSqm;
+      FoundationWeights.finnFoam50mmKgPerSqm / 50 * sizing;
 
   @override
-  num get kgPerCubicMeter =>
-      UpperBaseStructureAndWaterRoofWeights.hardDiskKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.finnFoam50mmKgPerCbm;
 
   @override
   num? get volume {
@@ -1265,7 +1263,7 @@ class WoodFrameColumnFoundationGroundFloor extends DemolitionMaterials {
 
   @override
   num get kgPerSquareMeter =>
-      sizing / 3.1 * CellarStructureWeights.ceramicTileKgPerSqm;
+      sizing / 3.1 * ExteriorWallWeights.woodFrame45x100mmKgPerSqm;
 
   @override
   num get kgPerCubicMeter => ExteriorWallWeights.woodFrame45x100mmKgPerCbm;
@@ -1341,11 +1339,11 @@ class ReinforcedConcreteColumnHollowCoreSlabFoundation
 
   @override
   num get kgPerCubicMeter =>
-      FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm;
+      FoundationWeights.reinforcedConcreteColumn250x250KgPerCbm; // this has been fixed, volume was overly inflated so it returned 0
 
   @override
   num get steelKgPerCubicMeter =>
-      FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm;
+      FoundationWeights.reinforcedConcreteColumn250x250SteelKgPerCbm; // this has been fixed.
 
   @override
   num? get volume {
@@ -1450,10 +1448,11 @@ class FinnFoamHollowCoreSlabFoundation extends DemolitionMaterials {
   FinnFoamHollowCoreSlabFoundation([this.foundation, this.sizing = 100]);
 
   @override
-  num get kgPerSquareMeter => DividingWallWeights.limeSandBrick130mmKgPerSqm;
+  num get kgPerSquareMeter =>
+      FoundationWeights.finnFoam50mmKgPerSqm / 50 * sizing;
 
   @override
-  num get kgPerCubicMeter => DividingWallWeights.limeSandBrick130mmKgPerCbm;
+  num get kgPerCubicMeter => FoundationWeights.finnFoam50mmKgPerCbm;
 
   @override
   num? get volume {
