@@ -1,0 +1,12 @@
+# To run these scripts, rps needs to be installed on your machine.
+# Check README.md for more information about installation process.
+# Make sure you run these scripts in the root directory!
+scripts:
+  # rps init
+  init:
+    $script: git submodule update --init --recursive
+    $description: Run this once after cloning the repository.
+  # rps gen
+  gen:
+    $script: (cd calculation && dart pub get && dart run build_runner build)
+    $description: Generates classes in the calculation submodule.

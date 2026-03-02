@@ -1,0 +1,9 @@
+*.freezed.dart
+*.g.dart
+
+.dart_tool/
+.idea/
+
+build/
+
+pubspec.lock
