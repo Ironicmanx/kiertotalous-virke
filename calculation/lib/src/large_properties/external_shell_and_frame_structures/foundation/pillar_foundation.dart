@@ -12,28 +12,35 @@ part 'pillar_foundation.g.dart';
 abstract class PillarFoundation extends Foundation with _$PillarFoundation {
   PillarFoundation._();
 
-  factory PillarFoundation(
-      {num? area,
-      num? circumference,
-      @Default(FoundationMaterial.concreteCasting)
-      FoundationMaterial? material}) = _PillarFoundation;
+  factory PillarFoundation({
+    num? area,
+    num? circumference,
+    @Default(FoundationMaterial.concreteCasting) FoundationMaterial? material,
+    @Default(0) num pileSpacing,
+    @Default(0.6) num blockHeight,
+    @Default(100) num frostStyrofoamThickness,
+    @Default(100) num finnFoamThickness,
+    @Default(3.1) num woodFrameWeight,
+    @Default(25) num solidBoardingThickness,
+  }) = _PillarFoundation;
 
   factory PillarFoundation.fromJson(Map<String, dynamic> json) =>
       _$PillarFoundationFromJson(json);
 
   late final _reinforcedConcreteColumnColumnFoundation =
-      ReinforcedConcreteColumnColumnFoundation(this);
+      ReinforcedConcreteColumnColumnFoundation(this, pileSpacing);
   late final _concreteBlockColumnFoundation =
-      ConcreteBlockColumnFoundation(this);
+      ConcreteBlockColumnFoundation(this, blockHeight);
   late final _frostProofStyrofoamColumnFoundation =
-      FrostProofStyrofoamColumnFoundation(this);
-  late final _finnFoamColumnFoundation = FinnFoamColumnFoundation(this);
+      FrostProofStyrofoamColumnFoundation(this, frostStyrofoamThickness);
+  late final _finnFoamColumnFoundation =
+      FinnFoamColumnFoundation(this, finnFoamThickness);
   late final _vaporBarrierPlasticColumnFoundation =
       VaporBarrierPlasticColumnFoundation(this);
   late final _woodFrameColumnFoundationGroundFloor =
-      WoodFrameColumnFoundationGroundFloor(this);
+      WoodFrameColumnFoundationGroundFloor(this, woodFrameWeight);
   late final _solidBoardingColumnFoundationGroundFloor =
-      SolidBoardingColumnFoundationGroundFloor(this);
+      SolidBoardingColumnFoundationGroundFloor(this, solidBoardingThickness);
 
   @override
   num? get concreteVolume => material == FoundationMaterial.concreteCasting

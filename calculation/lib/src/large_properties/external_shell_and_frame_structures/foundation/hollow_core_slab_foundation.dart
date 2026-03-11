@@ -13,35 +13,47 @@ abstract class HollowCoreSlabFoundation extends Foundation
     with _$HollowCoreSlabFoundation {
   HollowCoreSlabFoundation._();
 
-  factory HollowCoreSlabFoundation(
-      {num? area,
-      num? circumference,
-      @Default(FoundationMaterial.concreteCasting)
-      FoundationMaterial? material}) = _HollowCoreSlabFoundation;
+  factory HollowCoreSlabFoundation({
+    num? area,
+    num? circumference,
+    @Default(FoundationMaterial.concreteCasting) FoundationMaterial? material,
+    @Default(0) num pileSpacing,
+    @Default(0.6) num blockHeight,
+    @Default(100) num frostStyrofoamThickness,
+    @Default(100) num finnFoamThickness,
+    @Default(260) num hollowCoreSlabWeight,
+    @Default(100) num mineralWoolThickness,
+    @Default(100) num styrofoamThickness,
+    @Default(100) num concreteCastingThickness,
+  }) = _HollowCoreSlabFoundation;
 
   factory HollowCoreSlabFoundation.fromJson(Map<String, dynamic> json) =>
       _$HollowCoreSlabFoundationFromJson(json);
 
   late final _reinforcedConcreteColumnHollowCoreSlabFoundation =
-      ReinforcedConcreteColumnHollowCoreSlabFoundation(this);
+      ReinforcedConcreteColumnHollowCoreSlabFoundation(this, pileSpacing);
   late final _concreteBlockHollowCoreSlabFoundation =
-      ConcreteBlockHollowCoreSlabFoundation(this);
+      ConcreteBlockHollowCoreSlabFoundation(this, blockHeight);
   late final _frostProofStyrofoamHollowCoreSlabFoundation =
-      FrostProofStyrofoamHollowCoreSlabFoundation(this);
+      FrostProofStyrofoamHollowCoreSlabFoundation(
+          this, frostStyrofoamThickness);
   late final _finnFoamHollowCoreSlabFoundation =
-      FinnFoamHollowCoreSlabFoundation(this);
+      FinnFoamHollowCoreSlabFoundation(this, finnFoamThickness);
   late final _vaporBarrierPlasticHollowCoreSlabFoundation =
       VaporBarrierPlasticHollowCoreSlabFoundation(this);
   late final _hollowCoreSlabHollowCoreSlabFoundationGroundFloor =
-      HollowCoreSlabHollowCoreSlabFoundationGroundFloor(this);
+      HollowCoreSlabHollowCoreSlabFoundationGroundFloor(
+          this, hollowCoreSlabWeight);
   late final _hotBitumenBrushingHollowCoreSlabFoundationGroundFloor =
       HotBitumenBrushingHollowCoreSlabFoundationGroundFloor(this);
   late final _mineralWoolHollowCoreSlabFoundationGroundFloor =
-      MineralWoolHollowCoreSlabFoundationGroundFloor(this);
+      MineralWoolHollowCoreSlabFoundationGroundFloor(
+          this, mineralWoolThickness);
   late final _styrofoamHollowCoreSlabFoundationGroundFloor =
-      StyrofoamHollowCoreSlabFoundationGroundFloor(this);
+      StyrofoamHollowCoreSlabFoundationGroundFloor(this, styrofoamThickness);
   late final _concreteCastingHollowCoreSlabFoundationGroundFloor =
-      ConcreteCastingHollowCoreSlabFoundationGroundFloor(this);
+      ConcreteCastingHollowCoreSlabFoundationGroundFloor(
+          this, concreteCastingThickness);
 
   @override
   num? get concreteVolume => Utils.sumOrNull([

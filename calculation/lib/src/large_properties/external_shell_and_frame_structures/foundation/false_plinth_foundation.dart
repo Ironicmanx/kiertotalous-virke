@@ -13,33 +13,43 @@ abstract class FalsePlinthFoundation extends Foundation
     with _$FalsePlinthFoundation {
   FalsePlinthFoundation._();
 
-  factory FalsePlinthFoundation(
-      {num? area,
-      num? circumference,
-      @Default(FoundationMaterial.concreteCasting)
-      FoundationMaterial? material}) = _FalsePlinthFoundation;
+  factory FalsePlinthFoundation({
+    num? area,
+    num? circumference,
+    @Default(FoundationMaterial.concreteCasting) FoundationMaterial? material,
+    @Default(0) num pileSpacing,
+    @Default(0.6) num blockHeight,
+    @Default(100) num frostStyrofoamThickness,
+    @Default(100) num finnFoamThickness,
+    @Default(100) num slabThickness,
+    @Default(100) num mineralWoolThickness,
+    @Default(100) num styrofoamThickness,
+    @Default(100) num concreteCastingThickness,
+  }) = _FalsePlinthFoundation;
 
   factory FalsePlinthFoundation.fromJson(Map<String, dynamic> json) =>
       _$FalsePlinthFoundationFromJson(json);
 
   late final _reinforcedConcreteColumnFalsePlinth =
-      ReinforcedConcreteColumnFalsePlinth(this);
-  late final _concreteBlockFalsePlinth = ConcreteBlockFalsePlinth(this);
+      ReinforcedConcreteColumnFalsePlinth(this, pileSpacing);
+  late final _concreteBlockFalsePlinth =
+      ConcreteBlockFalsePlinth(this, blockHeight);
   late final _frostProofStyrofoamFalsePlinth =
-      FrostProofStyrofoamFalsePlinth(this);
-  late final _finnFoamFalsePlinth = FinnFoamFalsePlinth(this);
+      FrostProofStyrofoamFalsePlinth(this, frostStyrofoamThickness);
+  late final _finnFoamFalsePlinth =
+      FinnFoamFalsePlinth(this, finnFoamThickness);
   late final _vaporBarrierPlasticFalsePlinth =
       VaporBarrierPlasticFalsePlinth(this);
   late final _reinforcedConcreteSlabFalsePlinthGroundFloor =
-      ReinforcedConcreteSlabFalsePlinthGroundFloor(this);
+      ReinforcedConcreteSlabFalsePlinthGroundFloor(this, slabThickness);
   late final _hotBitumenBrushingFalsePlinthGroundFloor =
       HotBitumenBrushingFalsePlinthGroundFloor(this);
   late final _mineralWoolFalsePlinthGroundFloor =
-      MineralWoolFalsePlinthGroundFloor(this);
+      MineralWoolFalsePlinthGroundFloor(this, mineralWoolThickness);
   late final _styrofoamFalsePlinthGroundFloor =
-      StyrofoamFalsePlinthGroundFloor(this);
+      StyrofoamFalsePlinthGroundFloor(this, styrofoamThickness);
   late final _concreteCastingFalsePlinthGroundFloor =
-      ConcreteCastingFalsePlinthGroundFloor(this);
+      ConcreteCastingFalsePlinthGroundFloor(this, concreteCastingThickness);
 
   @override
   num? get concreteVolume => Utils.sumOrNull([

@@ -116,6 +116,14 @@ class _InputCellState extends State<InputCell> {
   }
 
   @override
+  void didUpdateWidget(covariant InputCell oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.initialValue != widget.initialValue && !_focusNode.hasFocus) {
+      formatDisplayedValue();
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,

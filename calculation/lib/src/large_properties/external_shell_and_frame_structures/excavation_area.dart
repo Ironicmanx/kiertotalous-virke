@@ -54,7 +54,8 @@ abstract class ExcavationArea with _$ExcavationArea {
 
     return (1 - Utils.percentageToFraction(cleanSoilPortionPercentage)!) *
         volumeToRemove! *
-        YardStructureWeights.soilToRemoveDensityKgPerCbm;
+        YardStructureWeights.soilToRemoveDensityKgPerCbm /
+        1000;
   }
 
   num? get asphaltTons {

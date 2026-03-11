@@ -56,28 +56,12 @@ class FoundationTypeAndFloorsForm extends StatelessWidget {
         return LayoutGrid(
           columnSizes: [400.px, 160.px, 160.px, 160.px, 160.px, 160.px, 160.px],
           rowSizes: [
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
-            50.px,
+            50.px, 50.px, 50.px, 50.px, 50.px, 50.px, 50.px,
+            50.px, 50.px, 50.px, 50.px, 50.px, 50.px, 50.px,
+            50.px, 50.px, 50.px, 50.px, 50.px, 50.px, 50.px,
+            50.px, 50.px, 50.px, 50.px, 50.px, 50.px, 50.px,
+            50.px, 50.px, 50.px, 50.px, 50.px, 50.px, 50.px,
+            50.px, 50.px,
           ],
           children: [
             Cell.header(
@@ -179,6 +163,251 @@ class FoundationTypeAndFloorsForm extends StatelessWidget {
               ),
             ),
             OutputCell(getter: () => state.circumference),
+            FormHeader(text: "Mitoitusarvot ja materiaalipaksuudet (huom. oletusarvot)"),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            RowCell(initialValue: 'Teräsbetonipaalu (m/m²)'),
+            InputCell(
+              initialValue: state.falsePlinth?.pileSpacing,
+              setter: (value) =>
+                  foundationsBloc.add(FalsePlinthPileSpacingChanged(value)),
+            ),
+            InputCell(
+              initialValue: state.crawlSpace?.pileSpacing,
+              setter: (value) =>
+                  foundationsBloc.add(CrawlSpacePileSpacingChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.pillar?.pileSpacing,
+              setter: (value) =>
+                  foundationsBloc.add(PillarPileSpacingChanged(value)),
+            ),
+            InputCell(
+              initialValue: state.hollowCoreSlab?.pileSpacing,
+              setter: (value) =>
+                  foundationsBloc.add(HollowCoreSlabPileSpacingChanged(value)),
+            ),
+            EmptyCell(),
+            RowCell(initialValue: 'Harkon korkeus (m)'),
+            InputCell(
+              initialValue: state.falsePlinth?.blockHeight,
+              setter: (value) =>
+                  foundationsBloc.add(FalsePlinthBlockHeightChanged(value)),
+            ),
+            InputCell(
+              initialValue: state.crawlSpace?.blockHeight,
+              setter: (value) =>
+                  foundationsBloc.add(CrawlSpaceBlockHeightChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.pillar?.blockHeight,
+              setter: (value) =>
+                  foundationsBloc.add(PillarBlockHeightChanged(value)),
+            ),
+            InputCell(
+              initialValue: state.hollowCoreSlab?.blockHeight,
+              setter: (value) =>
+                  foundationsBloc.add(HollowCoreSlabBlockHeightChanged(value)),
+            ),
+            EmptyCell(),
+            RowCell(initialValue: 'Valusokkelin leveys (m)'),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.crawlSpace?.castFoundationWidth,
+              setter: (value) => foundationsBloc
+                  .add(CrawlSpaceCastFoundationWidthChanged(value)),
+            ),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            RowCell(initialValue: 'Valusokkelin korkeus (m)'),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.crawlSpace?.castFoundationHeight,
+              setter: (value) => foundationsBloc
+                  .add(CrawlSpaceCastFoundationHeightChanged(value)),
+            ),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            RowCell(initialValue: 'Routaeristeen paksuus (mm)'),
+            InputCell(
+              initialValue: state.falsePlinth?.frostStyrofoamThickness,
+              setter: (value) =>
+                  foundationsBloc.add(FalsePlinthFrostStyrofoamChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.shallow?.frostStyrofoamThickness,
+              setter: (value) =>
+                  foundationsBloc.add(ShallowFrostStyrofoamChanged(value)),
+            ),
+            InputCell(
+              initialValue: state.pillar?.frostStyrofoamThickness,
+              setter: (value) =>
+                  foundationsBloc.add(PillarFrostStyrofoamChanged(value)),
+            ),
+            InputCell(
+              initialValue: state.hollowCoreSlab?.frostStyrofoamThickness,
+              setter: (value) => foundationsBloc
+                  .add(HollowCoreSlabFrostStyrofoamChanged(value)),
+            ),
+            EmptyCell(),
+            RowCell(initialValue: 'FinnFoam paksuus (mm)'),
+            InputCell(
+              initialValue: state.falsePlinth?.finnFoamThickness,
+              setter: (value) =>
+                  foundationsBloc.add(FalsePlinthFinnFoamChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.shallow?.finnFoamThickness,
+              setter: (value) =>
+                  foundationsBloc.add(ShallowFinnFoamChanged(value)),
+            ),
+            InputCell(
+              initialValue: state.pillar?.finnFoamThickness,
+              setter: (value) =>
+                  foundationsBloc.add(PillarFinnFoamChanged(value)),
+            ),
+            InputCell(
+              initialValue: state.hollowCoreSlab?.finnFoamThickness,
+              setter: (value) =>
+                  foundationsBloc.add(HollowCoreSlabFinnFoamChanged(value)),
+            ),
+            EmptyCell(),
+            RowCell(initialValue: 'Betonilaatan paksuus (mm)'),
+            InputCell(
+              initialValue: state.falsePlinth?.slabThickness,
+              setter: (value) =>
+                  foundationsBloc.add(FalsePlinthSlabThicknessChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.shallow?.slabThickness,
+              setter: (value) =>
+                  foundationsBloc.add(ShallowSlabThicknessChanged(value)),
+            ),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            RowCell(initialValue: 'Mineraalivillan paksuus (mm)'),
+            InputCell(
+              initialValue: state.falsePlinth?.mineralWoolThickness,
+              setter: (value) =>
+                  foundationsBloc.add(FalsePlinthMineralWoolChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.shallow?.mineralWoolThickness,
+              setter: (value) =>
+                  foundationsBloc.add(ShallowMineralWoolChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.hollowCoreSlab?.mineralWoolThickness,
+              setter: (value) =>
+                  foundationsBloc.add(HollowCoreSlabMineralWoolChanged(value)),
+            ),
+            EmptyCell(),
+            RowCell(initialValue: 'Styroxin paksuus (mm)'),
+            InputCell(
+              initialValue: state.falsePlinth?.styrofoamThickness,
+              setter: (value) =>
+                  foundationsBloc.add(FalsePlinthStyrofoamChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.shallow?.styrofoamThickness,
+              setter: (value) =>
+                  foundationsBloc.add(ShallowStyrofoamChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.hollowCoreSlab?.styrofoamThickness,
+              setter: (value) =>
+                  foundationsBloc.add(HollowCoreSlabStyrofoamChanged(value)),
+            ),
+            EmptyCell(),
+            RowCell(initialValue: 'Betonivalun paksuus (mm)'),
+            InputCell(
+              initialValue: state.falsePlinth?.concreteCastingThickness,
+              setter: (value) =>
+                  foundationsBloc.add(FalsePlinthConcreteCastingChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.shallow?.concreteCastingThickness,
+              setter: (value) =>
+                  foundationsBloc.add(ShallowConcreteCastingChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.hollowCoreSlab?.concreteCastingThickness,
+              setter: (value) => foundationsBloc
+                  .add(HollowCoreSlabConcreteCastingChanged(value)),
+            ),
+            EmptyCell(),
+            RowCell(initialValue: 'Kutterinpurun paksuus (mm)'),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.crawlSpace?.woodShavingsThickness,
+              setter: (value) =>
+                  foundationsBloc.add(CrawlSpaceWoodShavingsChanged(value)),
+            ),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            RowCell(initialValue: 'Puurungon paino (kg/m²)'),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.crawlSpace?.woodFrameWeight,
+              setter: (value) =>
+                  foundationsBloc.add(CrawlSpaceWoodFrameWeightChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.pillar?.woodFrameWeight,
+              setter: (value) =>
+                  foundationsBloc.add(PillarWoodFrameWeightChanged(value)),
+            ),
+            EmptyCell(),
+            EmptyCell(),
+            RowCell(initialValue: 'Umpilaudoituksen paksuus (mm)'),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.crawlSpace?.solidBoardingThickness,
+              setter: (value) =>
+                  foundationsBloc.add(CrawlSpaceSolidBoardingChanged(value)),
+            ),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.pillar?.solidBoardingThickness,
+              setter: (value) =>
+                  foundationsBloc.add(PillarSolidBoardingChanged(value)),
+            ),
+            EmptyCell(),
+            EmptyCell(),
+            RowCell(initialValue: 'Ontelolaatan paino (kg/m²)'),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            EmptyCell(),
+            InputCell(
+              initialValue: state.hollowCoreSlab?.hollowCoreSlabWeight,
+              setter: (value) => foundationsBloc
+                  .add(HollowCoreSlabHollowCoreSlabWeightChanged(value)),
+            ),
+            EmptyCell(),
             FormHeader(text: "Perustusten purkumateriaalimäärät"),
             EmptyCell(),
             EmptyCell(),

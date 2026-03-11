@@ -13,11 +13,18 @@ abstract class CrawlSpaceFoundation extends Foundation
     with _$CrawlSpaceFoundation {
   CrawlSpaceFoundation._();
 
-  factory CrawlSpaceFoundation(
-      {num? area,
-      num? circumference,
-      @Default(FoundationMaterial.concreteCasting)
-      FoundationMaterial? material}) = _CrawlSpaceFoundation;
+  factory CrawlSpaceFoundation({
+    num? area,
+    num? circumference,
+    @Default(FoundationMaterial.concreteCasting) FoundationMaterial? material,
+    @Default(0) num pileSpacing,
+    @Default(0.3) num castFoundationWidth,
+    @Default(0.6) num castFoundationHeight,
+    @Default(0.6) num blockHeight,
+    @Default(200) num woodShavingsThickness,
+    @Default(3.1) num woodFrameWeight,
+    @Default(25) num solidBoardingThickness,
+  }) = _CrawlSpaceFoundation;
 
   factory CrawlSpaceFoundation.fromJson(Map<String, dynamic> json) =>
       _$CrawlSpaceFoundationFromJson(json);
@@ -25,16 +32,18 @@ abstract class CrawlSpaceFoundation extends Foundation
   late final _reinforcedConcreteSlabFalsePlinthGroundFloor =
       ReinforcedConcreteSlabFalsePlinthGroundFloor(this);
   late final _reinforcedConcreteColumnCrawlSpace =
-      ReinforcedConcreteColumnCrawlSpace(this);
+      ReinforcedConcreteColumnCrawlSpace(this, pileSpacing);
   late final _reinforcedConcreteCastFoundationCrawlSpace =
-      ReinforcedConcreteCastFoundationCrawlSpace(this);
-  late final _concreteBlockCrawlSpace = ConcreteBlockCrawlSpace(this);
+      ReinforcedConcreteCastFoundationCrawlSpace(
+          this, castFoundationWidth, castFoundationHeight);
+  late final _concreteBlockCrawlSpace =
+      ConcreteBlockCrawlSpace(this, blockHeight);
   late final _woodShavingsCrawlSpaceGroundFloor =
-      WoodShavingsCrawlSpaceGroundFloor(this);
+      WoodShavingsCrawlSpaceGroundFloor(this, woodShavingsThickness);
   late final _woodFrameCrawlSpaceGroundFloor =
-      WoodFrameCrawlSpaceGroundFloor(this);
+      WoodFrameCrawlSpaceGroundFloor(this, woodFrameWeight);
   late final _solidBoardingCrawlSpaceGroundFloor =
-      SolidBoardingCrawlSpaceGroundFloor(this);
+      SolidBoardingCrawlSpaceGroundFloor(this, solidBoardingThickness);
   late final _constructionPaperCrawlSpaceGroundFloor =
       ConstructionPaperCrawlSpaceGroundFloor(this);
   late final _tarPaperCrawlSpaceGroundFloor =

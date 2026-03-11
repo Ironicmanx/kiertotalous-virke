@@ -12,27 +12,36 @@ part 'shallow_foundation.g.dart';
 abstract class ShallowFoundation extends Foundation with _$ShallowFoundation {
   ShallowFoundation._();
 
-  factory ShallowFoundation({num? area, num? circumference}) =
-      _ShallowFoundation;
+  factory ShallowFoundation({
+    num? area,
+    num? circumference,
+    @Default(100) num frostStyrofoamThickness,
+    @Default(100) num finnFoamThickness,
+    @Default(100) num slabThickness,
+    @Default(200) num mineralWoolThickness,
+    @Default(100) num styrofoamThickness,
+    @Default(100) num concreteCastingThickness,
+  }) = _ShallowFoundation;
 
   factory ShallowFoundation.fromJson(Map<String, dynamic> json) =>
       _$ShallowFoundationFromJson(json);
 
   late final _frostProofStyrofoamShallowFoundation =
-      FrostProofStyrofoamShallowFoundation(this);
-  late final _finnFoamShallowFoundation = FinnFoamShallowFoundation(this);
+      FrostProofStyrofoamShallowFoundation(this, frostStyrofoamThickness);
+  late final _finnFoamShallowFoundation =
+      FinnFoamShallowFoundation(this, finnFoamThickness);
   late final _vaporBarrierPlasticShallowFoundation =
       VaporBarrierPlasticShallowFoundation(this);
   late final _reinforcedConcreteSlabShallowFoundationGroundFloor =
-      ReinforcedConcreteSlabShallowFoundationGroundFloor(this);
+      ReinforcedConcreteSlabShallowFoundationGroundFloor(this, slabThickness);
   late final _hotBitumenBrushingShallowFoundationGroundFloor =
       HotBitumenBrushingShallowFoundationGroundFloor(this);
   late final _mineralWoolShallowFoundationGroundFloor =
-      MineralWoolShallowFoundationGroundFloor(this);
+      MineralWoolShallowFoundationGroundFloor(this, mineralWoolThickness);
   late final _styrofoamShallowFoundationGroundFloor =
-      StyrofoamShallowFoundationGroundFloor(this);
+      StyrofoamShallowFoundationGroundFloor(this, styrofoamThickness);
   late final _concreteCastingShallowFoundationGroundFloor =
-      ConcreteCastingShallowFoundationGroundFloor(this);
+      ConcreteCastingShallowFoundationGroundFloor(this, concreteCastingThickness);
 
   @override
   num? get concreteVolume => Utils.sumOrNull([
